@@ -3,58 +3,82 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Krish Garg | Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>My Awesome Project</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- 🌈 Navbar -->
   <header>
-    <h1>👋 Hi, I'm Krish Garg</h1>
-    <p>B.Tech Student | Python & AI Enthusiast | Developer</p>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
+    <nav class="navbar">
+      <h1 class="logo"><i class="fa-solid fa-bolt"></i> MyProject</h1>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button id="modeToggle"><i class="fa-solid fa-moon"></i></button>
     </nav>
   </header>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>I'm passionate about technology, AI, and creating useful digital projects.</p>
+  <!-- 🏠 Hero Section -->
+  <section id="home" class="hero">
+    <h2>Welcome to My Awesome Project 🌟</h2>
+    <p>This project is built with passion, creativity, and code!</p>
+    <button class="cta-btn">Explore Now</button>
   </section>
 
-  <section id="skills">
-    <h2>Skills</h2>
-    <ul>
-      <li>Python</li>
-      <li>HTML, CSS, JavaScript</li>
-      <li>Machine Learning</li>
-      <li>Data Analysis</li>
-    </ul>
-  </section>
-
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="project">
-      <h3>Energy Analyzer</h3>
-      <p>A Python project analyzing factory-level energy usage with graphs and regression.</p>
+  <!-- ⚙️ Features Section -->
+  <section id="features" class="features">
+    <h2>✨ Features</h2>
+    <div class="feature-box">
+      <i class="fa-solid fa-palette"></i>
+      <h3>Beautiful Design</h3>
+      <p>Clean, modern, and responsive design with smooth animations.</p>
     </div>
-    <div class="project">
-      <h3>AI Assistant</h3>
-      <p>A voice-based desktop assistant integrated with OpenAI and task automation.</p>
+    <div class="feature-box">
+      <i class="fa-solid fa-mobile-screen"></i>
+      <h3>Mobile Friendly</h3>
+      <p>Works perfectly on mobile, tablet, and desktop.</p>
+    </div>
+    <div class="feature-box">
+      <i class="fa-solid fa-cloud"></i>
+      <h3>Deployed Online</h3>
+      <p>Hosted live using Vercel for global access!</p>
     </div>
   </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: krish.garg2708@gmail.com</p>
-    <p>GitHub: <a href="https://github.com/yourusername" target="_blank">yourusername</a></p>
+  <!-- 💬 About Section -->
+  <section id="about" class="about">
+    <h2>About This Project</h2>
+    <p>This project was created as my first deployed web app. It showcases a clean UI, animations, and modern web features. Built using HTML, CSS, and JavaScript.</p>
   </section>
 
+  <!-- 📞 Contact Section -->
+  <section id="contact" class="contact">
+    <h2>Contact Me</h2>
+    <p>Let’s connect! Find me on:</p>
+    <div class="social-icons">
+      <a href="#"><i class="fa-brands fa-github"></i></a>
+      <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+      <a href="#"><i class="fa-brands fa-instagram"></i></a>
+    </div>
+  </section>
+
+  <!-- 🦶 Footer -->
   <footer>
-    <p>© 2025 Krish Garg | Built with 💻 and ☕</p>
+    <p>Made with ❤️ by Krish Garg © 2025</p>
   </footer>
 
+  <!-- JS -->
   <script src="script.js"></script>
 </body>
 </html>
