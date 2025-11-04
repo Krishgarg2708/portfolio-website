@@ -1,141 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Krish Garg | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a2d9d5a64b.js" crossorigin="anonymous"></script>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-
     body {
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      color: #fff;
-      min-height: 100vh;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #e0f7ff, #cfe0ff);
+      color: #333;
+      text-align: center;
     }
-
     header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 50px;
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      position: sticky;
-      top: 0;
+      background: #004aad;
+      color: white;
+      padding: 20px 0;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
-
+    header h1 { margin: 0; font-size: 2.2rem; }
+    header p { margin: 5px 0 0; }
+    nav {
+      margin-top: 10px;
+    }
     nav a {
-      color: #fff;
+      color: white;
       text-decoration: none;
       margin: 0 15px;
+      font-weight: 500;
       transition: 0.3s;
     }
-    nav a:hover { color: #00ffff; }
-
+    nav a:hover {
+      color: #aee1ff;
+    }
     section {
-      padding: 60px 80px;
+      padding: 60px 20px;
     }
-
-    h1, h2 {
-      color: #00ffff;
-      margin-bottom: 20px;
+    .skills {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
     }
-
+    .skill {
+      background: #004aad;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 20px;
+      transition: transform 0.3s;
+    }
+    .skill:hover { transform: scale(1.1); }
+    footer {
+      background: #004aad;
+      color: white;
+      padding: 20px;
+      margin-top: 40px;
+    }
     .social-icons a {
       color: white;
-      font-size: 25px;
-      margin-right: 20px;
+      margin: 0 10px;
+      font-size: 1.5rem;
       transition: 0.3s;
     }
     .social-icons a:hover {
-      color: #00ffff;
-      transform: scale(1.1);
+      color: #aee1ff;
+      transform: scale(1.2);
     }
 
-    .skills {
-      display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
+    /* Certificates dropdown */
+    #dropdownMenu {
+      display: none;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 10px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+      width: 250px;
     }
-    .skills span {
-      background: rgba(255,255,255,0.1);
-      padding: 8px 15px;
-      border-radius: 8px;
+    #dropdownMenu a {
+      display: block;
+      padding: 10px;
+      color: #333;
+      text-decoration: none;
+      border-bottom: 1px solid #eee;
       transition: 0.3s;
     }
-    .skills span:hover {
-      background: #00ffff;
-      color: #000;
+    #dropdownMenu a:hover {
+      background: #f3f8ff;
+      color: #004aad;
     }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: rgba(255,255,255,0.1);
-      margin-top: 40px;
+    #dropdownMenu a:last-child {
+      border-bottom: none;
     }
-
-    /* Certificates Section */
-    .certificates button {
-      background: rgba(255,255,255,0.1);
+    #certButton {
+      background: #004aad;
+      color: white;
       border: none;
-      color: #fff;
-      padding: 15px;
-      width: 100%;
-      text-align: left;
-      border-radius: 10px;
-      font-size: 18px;
-      margin-top: 10px;
+      padding: 12px 25px;
+      border-radius: 25px;
+      font-size: 1rem;
       cursor: pointer;
       transition: 0.3s;
     }
-    .certificates button:hover {
-      background: #00ffff;
-      color: #000;
-    }
-
-    .cert-content {
-      display: none;
-      margin-left: 20px;
-      margin-top: 10px;
-      animation: fadeIn 0.5s ease;
-    }
-
-    .cert-content ul {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    .cert-content li {
-      background: rgba(255,255,255,0.1);
-      margin: 8px 0;
-      padding: 8px 12px;
-      border-radius: 8px;
-      transition: 0.3s;
-    }
-
-    .cert-content li:hover {
-      background: #00ffff;
-      color: #000;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-5px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (max-width: 768px) {
-      section { padding: 40px 20px; }
-      header { flex-direction: column; }
+    #certButton:hover {
+      background: #0066ff;
     }
   </style>
 </head>
-
 <body>
+
   <header>
     <h1>Krish Garg</h1>
+    <p>Portfolio Website</p>
     <nav>
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
@@ -144,77 +124,62 @@
     </nav>
   </header>
 
-  <main>
-    <section id="about">
-      <h2>About Me</h2>
-      <p>Hey there 👋 I’m <b>Krish Garg</b>, a passionate learner and problem-solver currently studying at <b>Manav Rachna University, Faridabad</b>.<br>
-      I completed my schooling from <b>S.M. Arya Public School</b>.<br>
-      I actively participate in hackathons and my main focus area is <b>database management and optimization</b>.</p>
-    </section>
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      Hello! I'm <strong>Krish Garg</strong>, currently studying at <strong>Manav Rachna University, Faridabad</strong>.<br>
+      I completed my schooling from <strong>S.M. Arya Public School</strong>.<br><br>
+      I actively participate in <strong>hackathons</strong>, where I handle the <strong>database management</strong> part of the project.
+    </p>
+  </section>
 
-    <section id="skills">
-      <h2>My Skills</h2>
-      <div class="skills">
-        <span>C</span>
-        <span>Python</span>
-        <span>DBMS</span>
-        <span>Java</span>
-      </div>
-    </section>
+  <section id="skills">
+    <h2>My Skills</h2>
+    <div class="skills">
+      <div class="skill">C</div>
+      <div class="skill">Python</div>
+      <div class="skill">DBMS</div>
+      <div class="skill">Java</div>
+    </div>
+  </section>
 
-    <section id="certificates" class="certificates">
-      <h2>Certificates</h2>
+  <section id="certificates">
+    <h2>Certificates</h2>
+    <button id="certButton">Certificates</button>
+    <div id="dropdownMenu">
+      <a href="https://drive.google.com/drive/folders/1z2hQQeQ7HJtt3goHLkbJN3PY7C2MAQtq?usp=sharing" target="_blank">LinkedIn Learning Certificates</a>
+      <a href="https://drive.google.com/drive/folders/1MmF7ifAJCJ6kV4AtEcEfIZ2K0H3eGMVb?usp=sharing" target="_blank">Infosys Certificates</a>
+      <a href="https://drive.google.com/file/d/1PT0a64xwxwQhXiTB6LrqVpVSzFtVXmZC/view?usp=sharing" target="_blank">Other Certificates</a>
+    </div>
+  </section>
 
-      <button onclick="toggleCert('mainCert')">Certificates</button>
-      <div id="mainCert" class="cert-content">
-
-        <button onclick="toggleCert('linkedIn')">LinkedIn Learning</button>
-        <div id="linkedIn" class="cert-content">
-          <ul>
-            <li>Python Essential Training</li>
-            <li>Database Fundamentals</li>
-            <li>Java Programming Basics</li>
-          </ul>
-        </div>
-
-        <button onclick="toggleCert('infosys')">Infosys</button>
-        <div id="infosys" class="cert-content">
-          <ul>
-            <li>Infosys Springboard – Python Developer</li>
-            <li>Infosys Java Fundamentals</li>
-          </ul>
-        </div>
-
-        <button onclick="toggleCert('other')">Other Certificates</button>
-        <div id="other" class="cert-content">
-          <ul>
-            <li>Hackathon Participation – MRU 2025</li>
-            <li>Data Science Workshop Certificate</li>
-          </ul>
-        </div>
-
-      </div>
-    </section>
-
-    <section id="contact">
-      <h2>Connect with Me</h2>
-      <div class="social-icons">
-        <a href="https://github.com/Krishgarg2708" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/krish-garg-047649330" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="https://instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
-      </div>
-    </section>
-  </main>
+  <section id="contact">
+    <h2>Connect With Me</h2>
+    <div class="social-icons">
+      <a href="https://github.com/Krishgarg2708" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/krish-garg-047649330" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+  </section>
 
   <footer>
-    <p>© 2025 Krish Garg | Built with ❤️ and Passion</p>
+    <p>© 2025 Krish Garg | All Rights Reserved</p>
   </footer>
 
   <script>
-    function toggleCert(id) {
-      const content = document.getElementById(id);
-      content.style.display = content.style.display === "block" ? "none" : "block";
-    }
+    const certButton = document.getElementById('certButton');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+
+    certButton.addEventListener('click', () => {
+      dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+    });
+
+    window.addEventListener('click', (e) => {
+      if (!certButton.contains(e.target) && !dropdownMenu.contains(e.target)) {
+        dropdownMenu.style.display = 'none';
+      }
+    });
   </script>
+
 </body>
 </html>
