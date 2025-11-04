@@ -104,6 +104,58 @@ body {
   background: rgba(255, 255, 255, 0.2);
 }
 
+/* Certificates */
+.certificates {
+  text-align: center;
+  padding: 70px 20px;
+}
+
+.cert-text {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+}
+
+.cert-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.cert-card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 25px;
+  border-radius: 15px;
+  width: 280px;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.cert-card:hover {
+  transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.cert-card i {
+  font-size: 2rem;
+  color: #ffeb3b;
+  margin-bottom: 10px;
+}
+
+.cert-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 16px;
+  background: #ffeb3b;
+  color: #333;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.cert-btn:hover {
+  background: white;
+}
+
 /* About Section */
 .about, .contact {
   padding: 60px 20px;
