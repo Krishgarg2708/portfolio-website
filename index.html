@@ -77,20 +77,53 @@
       margin-top: 40px;
     }
 
-    .certificates ul {
+    /* Certificates Section */
+    .certificates button {
+      background: rgba(255,255,255,0.1);
+      border: none;
+      color: #fff;
+      padding: 15px;
+      width: 100%;
+      text-align: left;
+      border-radius: 10px;
+      font-size: 18px;
+      margin-top: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .certificates button:hover {
+      background: #00ffff;
+      color: #000;
+    }
+
+    .cert-content {
+      display: none;
+      margin-left: 20px;
+      margin-top: 10px;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .cert-content ul {
       list-style: none;
       padding-left: 0;
     }
-    .certificates li {
+
+    .cert-content li {
       background: rgba(255,255,255,0.1);
-      margin: 10px 0;
-      padding: 10px;
+      margin: 8px 0;
+      padding: 8px 12px;
       border-radius: 8px;
       transition: 0.3s;
     }
-    .certificates li:hover {
+
+    .cert-content li:hover {
       background: #00ffff;
       color: #000;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-5px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     @media (max-width: 768px) {
@@ -114,8 +147,8 @@
   <main>
     <section id="about">
       <h2>About Me</h2>
-      <p>Hey there 👋 I’m <b>Krish Garg</b>, a passionate learner and problem-solver currently studying at <b>Manav Rachna University, Faridabad</b>.  
-      I completed my schooling from <b>S.M. Arya Public School</b>.  
+      <p>Hey there 👋 I’m <b>Krish Garg</b>, a passionate learner and problem-solver currently studying at <b>Manav Rachna University, Faridabad</b>.<br>
+      I completed my schooling from <b>S.M. Arya Public School</b>.<br>
       I actively participate in hackathons and my main focus area is <b>database management and optimization</b>.</p>
     </section>
 
@@ -131,10 +164,31 @@
 
     <section id="certificates" class="certificates">
       <h2>Certificates</h2>
-      <ul>
-        <li>LinkedIn Learning Certificates</li>
-        <li>Infosys Certified Courses</li>
-      </ul>
+
+      <button onclick="toggleCert('linkedIn')">LinkedIn Learning Certificates</button>
+      <div id="linkedIn" class="cert-content">
+        <ul>
+          <li>Python Essential Training</li>
+          <li>Database Fundamentals</li>
+          <li>Java Programming Basics</li>
+        </ul>
+      </div>
+
+      <button onclick="toggleCert('infosys')">Infosys Certificates</button>
+      <div id="infosys" class="cert-content">
+        <ul>
+          <li>Infosys Springboard – Python Developer</li>
+          <li>Infosys Java Fundamentals</li>
+        </ul>
+      </div>
+
+      <button onclick="toggleCert('other')">Other Certificates</button>
+      <div id="other" class="cert-content">
+        <ul>
+          <li>Hackathon Participation – MRU 2025</li>
+          <li>Data Science Workshop Certificate</li>
+        </ul>
+      </div>
     </section>
 
     <section id="contact">
@@ -150,5 +204,12 @@
   <footer>
     <p>© 2025 Krish Garg | Built with ❤️ and Passion</p>
   </footer>
+
+  <script>
+    function toggleCert(id) {
+      const content = document.getElementById(id);
+      content.style.display = content.style.display === "block" ? "none" : "block";
+    }
+  </script>
 </body>
 </html>
