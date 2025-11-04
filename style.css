@@ -1,44 +1,136 @@
-body {
-  font-family: "Poppins", sans-serif;
+* {
   margin: 0;
-  background-color: #f7f7f7;
-  color: #333;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
-header {
-  background: #0078ff;
+body {
+  background: linear-gradient(135deg, #667eea, #764ba2);
   color: white;
-  text-align: center;
-  padding: 40px 10px;
+  transition: background 0.3s, color 0.3s;
 }
 
-nav a {
-  color: white;
-  margin: 0 10px;
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  margin: 10px;
+}
+
+.logo {
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+}
+
+.nav-links li {
+  margin-left: 20px;
+}
+
+.nav-links a {
   text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: color 0.3s;
 }
 
-section {
-  padding: 40px 20px;
-  max-width: 800px;
-  margin: auto;
+.nav-links a:hover {
+  color: #ffe082;
 }
 
-h2 {
-  color: #0078ff;
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 100px 20px;
 }
 
-.project {
+.cta-btn {
+  background: #ffe082;
+  color: #333;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  margin-top: 20px;
+  font-size: 1rem;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.cta-btn:hover {
   background: white;
-  padding: 15px;
-  border-radius: 10px;
-  margin: 10px 0;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transform: scale(1.05);
 }
 
+/* Features */
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 50px 20px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.feature-box {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  margin: 10px;
+  border-radius: 12px;
+  width: 280px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.feature-box:hover {
+  transform: translateY(-10px);
+}
+
+.feature-box i {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+/* About */
+.about, .contact {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+/* Social Icons */
+.social-icons a {
+  margin: 0 10px;
+  font-size: 1.5rem;
+  color: white;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.social-icons a:hover {
+  transform: scale(1.2);
+  color: #ffe082;
+}
+
+/* Footer */
 footer {
   text-align: center;
   padding: 20px;
-  background: #222;
-  color: white;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Dark Mode */
+body.dark-mode {
+  background: #121212;
+  color: #e0e0e0;
+}
+
+body.dark-mode .navbar {
+  background: rgba(255, 255, 255, 0.1);
 }
