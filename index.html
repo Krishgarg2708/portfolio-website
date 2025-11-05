@@ -24,7 +24,7 @@
 
     /* Navbar */
     header {
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(15px);
       position: fixed;
       width: 100%;
@@ -66,24 +66,34 @@
       align-items: center;
       text-align: center;
       padding: 0 20px;
-      background: linear-gradient(135deg, #8e2de2, #4a00e0);
-      color: #fff;
+      animation: fadeIn 1.5s ease;
     }
 
     .hero h2 {
       font-size: 2.8rem;
-      animation: fadeInDown 1s ease;
+      color: #fff;
     }
 
     .hero p {
       margin-top: 15px;
       font-size: 1.2rem;
-      animation: fadeIn 1.5s ease;
+      color: #f1f1f1;
     }
 
+    /* Section Cards */
     section {
       padding: 100px 20px 80px;
       text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    section .card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      padding: 50px 30px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
       animation: fadeIn 1.5s ease;
     }
 
@@ -94,31 +104,15 @@
       letter-spacing: 1px;
     }
 
-    #about {
-      background: linear-gradient(135deg, #4a00e0, #6a11cb);
-    }
-
-    #skills {
-      background: linear-gradient(135deg, #6a11cb, #2575fc);
-    }
-
-    #certificates {
-      background: linear-gradient(135deg, #2575fc, #6a11cb);
-    }
-
-    #contact {
-      background: linear-gradient(135deg, #6a11cb, #4a00e0);
-    }
-
     #about p {
       max-width: 700px;
       margin: auto;
       font-size: 1.1rem;
       line-height: 1.6;
-      color: #e0e0e0;
+      color: #e8e8e8;
     }
 
-    /* Skills Section */
+    /* Skills */
     .skills {
       display: flex;
       justify-content: center;
@@ -153,13 +147,13 @@
       margin-top: 40px;
     }
 
-    .card {
-      width: 250px;
+    .flip-card {
+      width: 240px;
       height: 160px;
       perspective: 1000px;
     }
 
-    .inner-card {
+    .flip-inner {
       position: relative;
       width: 100%;
       height: 100%;
@@ -168,12 +162,12 @@
       cursor: pointer;
     }
 
-    .card:hover .inner-card {
+    .flip-card:hover .flip-inner {
       transform: rotateY(180deg);
     }
 
-    .front,
-    .back {
+    .flip-front,
+    .flip-back {
       position: absolute;
       width: 100%;
       height: 100%;
@@ -182,73 +176,64 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
       color: white;
+      font-weight: 600;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     }
 
-    .front {
+    .flip-front {
       background: linear-gradient(135deg, #667eea, #764ba2);
     }
 
-    .back {
+    .flip-back {
       background: #fff;
-      color: #333;
+      color: #4a00e0;
       transform: rotateY(180deg);
     }
 
-    .back a {
+    .flip-back a {
       text-decoration: none;
       color: #4a00e0;
-      font-weight: 600;
+      font-weight: 700;
     }
 
-    /* Contact Section */
+    /* Contact */
     .social-icons {
       margin-top: 30px;
       display: flex;
       justify-content: center;
-      gap: 25px;
+      gap: 30px;
     }
 
     .social-icons a {
       color: #fff;
-      font-size: 2rem;
-      transition: 0.3s;
+      font-size: 2.5rem;
+      transition: 0.3s ease;
     }
 
     .social-icons a:hover {
       color: #c2e9fb;
       transform: scale(1.2);
-      text-shadow: 0 0 10px #fff;
+      text-shadow: 0 0 15px #fff;
     }
 
     footer {
-      background: rgba(0, 0, 0, 0.4);
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
       color: white;
       padding: 20px;
       text-align: center;
       font-size: 0.9rem;
       letter-spacing: 0.5px;
+      margin-top: 60px;
     }
 
-    /* Animations */
     @keyframes fadeIn {
       from {
         opacity: 0;
       }
       to {
         opacity: 1;
-      }
-    }
-
-    @keyframes fadeInDown {
-      from {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
       }
     }
 
@@ -293,52 +278,58 @@
   </div>
 
   <section id="about">
-    <h2>About Me</h2>
-    <p>
-      I'm <strong>Krish Garg</strong>, currently pursuing my studies at
-      <strong>Manav Rachna University, Faridabad</strong>.<br />
-      I completed my schooling from <strong>S.M. Arya Public School</strong>.<br /><br />
-      I actively participate in <strong>hackathons</strong>, where I handle
-      <strong>database management</strong> and backend development.
-    </p>
+    <div class="card">
+      <h2>About Me</h2>
+      <p>
+        I'm <strong>Krish Garg</strong>, currently pursuing my studies at
+        <strong>Manav Rachna University, Faridabad</strong>.<br />
+        I completed my schooling from <strong>S.M. Arya Public School</strong>.<br /><br />
+        I actively participate in <strong>hackathons</strong>, where I handle
+        <strong>database management</strong> and backend development.
+      </p>
+    </div>
   </section>
 
   <section id="skills">
-    <h2>My Skills</h2>
-    <div class="skills">
-      <div class="skill">C</div>
-      <div class="skill">Python</div>
-      <div class="skill">DBMS</div>
-      <div class="skill">Java</div>
+    <div class="card">
+      <h2>My Skills</h2>
+      <div class="skills">
+        <div class="skill">C</div>
+        <div class="skill">Python</div>
+        <div class="skill">DBMS</div>
+        <div class="skill">Java</div>
+      </div>
     </div>
   </section>
 
   <section id="certificates">
-    <h2>Certificates</h2>
-    <div class="certificates-container">
-      <div class="card">
-        <div class="inner-card">
-          <div class="front">LinkedIn Certificates</div>
-          <div class="back">
-            <a href="https://drive.google.com/drive/folders/1icxVyhlNBEeQG14aCL5zOiPoUohq_Bdu?usp=sharing" target="_blank">View Now</a>
+    <div class="card">
+      <h2>Certificates</h2>
+      <div class="certificates-container">
+        <div class="flip-card">
+          <div class="flip-inner">
+            <div class="flip-front">LinkedIn Certificates</div>
+            <div class="flip-back">
+              <a href="https://drive.google.com/drive/folders/1icxVyhlNBEeQG14aCL5zOiPoUohq_Bdu?usp=sharing" target="_blank">View Now</a>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="card">
-        <div class="inner-card">
-          <div class="front">Infosys Certificates</div>
-          <div class="back">
-            <a href="https://drive.google.com/drive/folders/1icxVyhlNBEeQG14aCL5zOiPoUohq_Bdu?usp=sharing" target="_blank">View Now</a>
+        <div class="flip-card">
+          <div class="flip-inner">
+            <div class="flip-front">Infosys Certificates</div>
+            <div class="flip-back">
+              <a href="https://drive.google.com/drive/folders/1icxVyhlNBEeQG14aCL5zOiPoUohq_Bdu?usp=sharing" target="_blank">View Now</a>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="card">
-        <div class="inner-card">
-          <div class="front">Other Certificates</div>
-          <div class="back">
-            <a href="https://drive.google.com/drive/folders/1icxVyhlNBEeQG14aCL5zOiPoUohq_Bdu?usp=sharing" target="_blank">View Now</a>
+        <div class="flip-card">
+          <div class="flip-inner">
+            <div class="flip-front">Other Certificates</div>
+            <div class="flip-back">
+              <a href="https://drive.google.com/drive/folders/1icxVyhlNBEeQG14aCL5zOiPoUohq_Bdu?usp=sharing" target="_blank">View Now</a>
+            </div>
           </div>
         </div>
       </div>
@@ -346,11 +337,13 @@
   </section>
 
   <section id="contact">
-    <h2>Connect With Me</h2>
-    <div class="social-icons">
-      <a href="https://github.com/Krishgarg2708" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="https://www.linkedin.com/in/krish-garg-047649330" target="_blank"><i class="fab fa-linkedin"></i></a>
-      <a href="https://www.instagram.com/krish_g" target="_blank"><i class="fab fa-instagram"></i></a>
+    <div class="card">
+      <h2>Connect With Me</h2>
+      <div class="social-icons">
+        <a href="https://github.com/Krishgarg2708" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/krish-garg-047649330" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.instagram.com/krish_g" target="_blank"><i class="fab fa-instagram"></i></a>
+      </div>
     </div>
   </section>
 
