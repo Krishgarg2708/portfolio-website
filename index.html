@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Krish Garg | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <script src="https://kit.fontawesome.com/a2d9d5a64b.js" crossorigin="anonymous"></script>
+
   <style>
     * {
       margin: 0;
@@ -34,7 +35,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 15px 40px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     }
 
     header h1 {
@@ -81,7 +82,7 @@
     }
 
     section {
-      padding: 100px 20px 60px;
+      padding: 100px 20px 80px;
       text-align: center;
       animation: fadeIn 1.5s ease;
     }
@@ -91,6 +92,22 @@
       margin-bottom: 20px;
       text-transform: uppercase;
       letter-spacing: 1px;
+    }
+
+    #about {
+      background: linear-gradient(135deg, #4a00e0, #6a11cb);
+    }
+
+    #skills {
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+    }
+
+    #certificates {
+      background: linear-gradient(135deg, #2575fc, #6a11cb);
+    }
+
+    #contact {
+      background: linear-gradient(135deg, #6a11cb, #4a00e0);
     }
 
     #about p {
@@ -118,7 +135,7 @@
       color: #fff;
       font-weight: 600;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
     .skill:hover {
@@ -155,7 +172,8 @@
       transform: rotateY(180deg);
     }
 
-    .front, .back {
+    .front,
+    .back {
       position: absolute;
       width: 100%;
       height: 100%;
@@ -164,7 +182,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
       color: white;
     }
 
@@ -186,13 +204,15 @@
 
     /* Contact Section */
     .social-icons {
-      margin-top: 20px;
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
     }
 
     .social-icons a {
       color: #fff;
-      margin: 0 15px;
-      font-size: 1.8rem;
+      font-size: 2rem;
       transition: 0.3s;
     }
 
@@ -213,32 +233,50 @@
 
     /* Animations */
     @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
     }
 
     @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* Responsive */
     @media (max-width: 768px) {
       header {
         flex-direction: column;
+        padding: 10px 20px;
       }
+
       .hero h2 {
         font-size: 2rem;
       }
+
       .skills {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .certificates-container {
         flex-direction: column;
         align-items: center;
       }
     }
   </style>
 </head>
-<body>
 
+<body>
   <header>
     <h1>Krish Garg</h1>
     <nav>
@@ -257,9 +295,11 @@
   <section id="about">
     <h2>About Me</h2>
     <p>
-      I'm <strong>Krish Garg</strong>, currently pursuing my studies at <strong>Manav Rachna University, Faridabad</strong>.<br>
-      I completed my schooling from <strong>S.M. Arya Public School</strong>.<br><br>
-      I actively participate in <strong>hackathons</strong>, where I handle <strong>database management</strong> and backend development.
+      I'm <strong>Krish Garg</strong>, currently pursuing my studies at
+      <strong>Manav Rachna University, Faridabad</strong>.<br />
+      I completed my schooling from <strong>S.M. Arya Public School</strong>.<br /><br />
+      I actively participate in <strong>hackathons</strong>, where I handle
+      <strong>database management</strong> and backend development.
     </p>
   </section>
 
@@ -280,18 +320,20 @@
         <div class="inner-card">
           <div class="front">LinkedIn Certificates</div>
           <div class="back">
-            <a href="https://drive.google.com/drive/folders/1z2hQQeQ7HJtt3goHLkbJN3PY7C2MAQtq?usp=sharing" target="_blank">View Now</a>
+            <a href="https://drive.google.com/drive/folders/1icxVyhlNBEeQG14aCL5zOiPoUohq_Bdu?usp=sharing" target="_blank">View Now</a>
           </div>
         </div>
       </div>
+
       <div class="card">
         <div class="inner-card">
           <div class="front">Infosys Certificates</div>
           <div class="back">
-            <a href="https://drive.google.com/drive/folders/1MmF7ifAJCJ6kV4AtEcEfIZ2K0H3eGMVb?usp=sharing" target="_blank">View Now</a>
+            <a href="https://drive.google.com/drive/folders/1icxVyhlNBEeQG14aCL5zOiPoUohq_Bdu?usp=sharing" target="_blank">View Now</a>
           </div>
         </div>
       </div>
+
       <div class="card">
         <div class="inner-card">
           <div class="front">Other Certificates</div>
@@ -315,6 +357,5 @@
   <footer>
     <p>© 2025 Krish Garg | All Rights Reserved</p>
   </footer>
-
 </body>
 </html>
