@@ -16,15 +16,15 @@
     }
 
     body {
-      background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
-      color: #222;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: #fff;
       overflow-x: hidden;
     }
 
     /* Navbar */
     header {
-      background: rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(15px);
       position: fixed;
       width: 100%;
       top: 0;
@@ -34,16 +34,17 @@
       justify-content: space-between;
       align-items: center;
       padding: 15px 40px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
     header h1 {
-      color: #004aad;
+      color: #fff;
       font-size: 1.8rem;
+      font-weight: 600;
     }
 
     nav a {
-      color: #004aad;
+      color: #fff;
       text-decoration: none;
       margin: 0 15px;
       font-weight: 500;
@@ -51,7 +52,8 @@
     }
 
     nav a:hover {
-      color: #0066ff;
+      color: #c2e9fb;
+      text-shadow: 0 0 10px #fff;
     }
 
     /* Hero Section */
@@ -63,32 +65,32 @@
       align-items: center;
       text-align: center;
       padding: 0 20px;
-      background: linear-gradient(135deg, #c2e9fb, #a1c4fd);
+      background: linear-gradient(135deg, #8e2de2, #4a00e0);
+      color: #fff;
     }
 
     .hero h2 {
       font-size: 2.8rem;
-      color: #004aad;
       animation: fadeInDown 1s ease;
     }
 
     .hero p {
       margin-top: 15px;
       font-size: 1.2rem;
-      color: #333;
       animation: fadeIn 1.5s ease;
     }
 
-    /* About Section */
     section {
       padding: 100px 20px 60px;
       text-align: center;
+      animation: fadeIn 1.5s ease;
     }
 
     h2 {
-      color: #004aad;
       font-size: 2rem;
       margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
     #about p {
@@ -96,9 +98,10 @@
       margin: auto;
       font-size: 1.1rem;
       line-height: 1.6;
+      color: #e0e0e0;
     }
 
-    /* Skills */
+    /* Skills Section */
     .skills {
       display: flex;
       justify-content: center;
@@ -108,91 +111,104 @@
     }
 
     .skill {
-      background: rgba(255, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.15);
       backdrop-filter: blur(10px);
       padding: 15px 30px;
       border-radius: 30px;
-      color: #004aad;
+      color: #fff;
       font-weight: 600;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
 
     .skill:hover {
       transform: scale(1.1);
-      background: #004aad;
-      color: white;
+      background: #fff;
+      color: #4a00e0;
     }
 
-    /* Certificates */
-    #certButton {
-      background: #004aad;
-      color: white;
-      border: none;
-      padding: 12px 25px;
-      border-radius: 25px;
-      font-size: 1rem;
+    /* Certificates Flip Cards */
+    .certificates-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .card {
+      width: 250px;
+      height: 160px;
+      perspective: 1000px;
+    }
+
+    .inner-card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
       cursor: pointer;
-      transition: 0.3s;
     }
 
-    #certButton:hover {
-      background: #0066ff;
-      transform: scale(1.05);
+    .card:hover .inner-card {
+      transform: rotateY(180deg);
     }
 
-    #dropdownMenu {
-      display: none;
+    .front, .back {
       position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      margin-top: 10px;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-      width: 260px;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      color: white;
     }
 
-    #dropdownMenu a {
-      display: block;
-      padding: 12px;
+    .front {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+    }
+
+    .back {
+      background: #fff;
       color: #333;
+      transform: rotateY(180deg);
+    }
+
+    .back a {
       text-decoration: none;
-      border-bottom: 1px solid #eee;
-      transition: 0.3s;
+      color: #4a00e0;
+      font-weight: 600;
     }
 
-    #dropdownMenu a:hover {
-      background: #f0f8ff;
-      color: #004aad;
-    }
-
-    #dropdownMenu a:last-child {
-      border-bottom: none;
-    }
-
-    /* Contact */
+    /* Contact Section */
     .social-icons {
       margin-top: 20px;
     }
 
     .social-icons a {
-      color: #004aad;
+      color: #fff;
       margin: 0 15px;
       font-size: 1.8rem;
       transition: 0.3s;
     }
 
     .social-icons a:hover {
-      color: #0066ff;
+      color: #c2e9fb;
       transform: scale(1.2);
+      text-shadow: 0 0 10px #fff;
     }
 
     footer {
-      background: #004aad;
+      background: rgba(0, 0, 0, 0.4);
       color: white;
       padding: 20px;
       text-align: center;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
     }
 
     /* Animations */
@@ -243,7 +259,7 @@
     <p>
       I'm <strong>Krish Garg</strong>, currently pursuing my studies at <strong>Manav Rachna University, Faridabad</strong>.<br>
       I completed my schooling from <strong>S.M. Arya Public School</strong>.<br><br>
-      I actively participate in <strong>hackathons</strong>, where I handle the <strong>database management</strong> and backend development parts of projects.
+      I actively participate in <strong>hackathons</strong>, where I handle <strong>database management</strong> and backend development.
     </p>
   </section>
 
@@ -259,11 +275,31 @@
 
   <section id="certificates">
     <h2>Certificates</h2>
-    <button id="certButton">View Certificates</button>
-    <div id="dropdownMenu">
-      <a href="https://drive.google.com/drive/folders/1z2hQQeQ7HJtt3goHLkbJN3PY7C2MAQtq?usp=sharing" target="_blank">LinkedIn Certificates</a>
-      <a href="https://drive.google.com/drive/folders/1MmF7ifAJCJ6kV4AtEcEfIZ2K0H3eGMVb?usp=sharing" target="_blank">Infosys Certificates</a>
-      <a href="https://drive.google.com/file/d/1PT0a64xwxwQhXiTB6LrqVpVSzFtVXmZC/view?usp=sharing" target="_blank">Other Certificates</a>
+    <div class="certificates-container">
+      <div class="card">
+        <div class="inner-card">
+          <div class="front">LinkedIn Certificates</div>
+          <div class="back">
+            <a href="https://drive.google.com/drive/folders/1z2hQQeQ7HJtt3goHLkbJN3PY7C2MAQtq?usp=sharing" target="_blank">View Now</a>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="inner-card">
+          <div class="front">Infosys Certificates</div>
+          <div class="back">
+            <a href="https://drive.google.com/drive/folders/1MmF7ifAJCJ6kV4AtEcEfIZ2K0H3eGMVb?usp=sharing" target="_blank">View Now</a>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="inner-card">
+          <div class="front">Other Certificates</div>
+          <div class="back">
+            <a href="https://drive.google.com/drive/folders/1icxVyhlNBEeQG14aCL5zOiPoUohq_Bdu?usp=sharing" target="_blank">View Now</a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -272,7 +308,7 @@
     <div class="social-icons">
       <a href="https://github.com/Krishgarg2708" target="_blank"><i class="fab fa-github"></i></a>
       <a href="https://www.linkedin.com/in/krish-garg-047649330" target="_blank"><i class="fab fa-linkedin"></i></a>
-      <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.instagram.com/krish_g" target="_blank"><i class="fab fa-instagram"></i></a>
     </div>
   </section>
 
@@ -280,20 +316,5 @@
     <p>© 2025 Krish Garg | All Rights Reserved</p>
   </footer>
 
-  <script>
-    const certButton = document.getElementById('certButton');
-    const dropdownMenu = document.getElementById('dropdownMenu');
-
-    certButton.addEventListener('click', () => {
-      dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
-    });
-
-    window.addEventListener('click', (e) => {
-      if (!certButton.contains(e.target) && !dropdownMenu.contains(e.target)) {
-        dropdownMenu.style.display = 'none';
-      }
-    });
-  </script>
 </body>
 </html>
-
