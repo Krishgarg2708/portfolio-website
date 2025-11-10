@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portfolio — Krish Garg</title>
+
+  <!-- Google font (works when online) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #ffffff;
+      --surface: #fbfbff;
+      --text: #0f1724;
+      --muted: #55607a;
+      --accent: #6c63ff;
+      --glass: rgba(255,255,255,0.6);
+      --card-shadow: 0 6px 18px rgba(16,24,40,0.08);
+      --glass-2: rgba(255,255,255,0.4);
+    }
+    [data-theme="dark"]{
+      --bg: #0b1220;
+      --surface: #071026;
+      --text: #e6eef8;
+      --muted: #9fb3d2;
+      --accent: #8b6cff;
+      --glass: rgba(255,255,255,0.03);
+      --card-shadow: 0 8px 30px rgba(2,6,23,0.7);
+      --glass-2: rgba(255,255,255,0.02);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,var(--bg), var(--surface));
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      transition: background .35s ease, color .35s ease;
+    }
+
+    .container{
+      max-width:1100px;
+      margin:32px auto;
+      padding:28px;
+    }
+
+    /* Header */
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:28px;
+    }
+    .brand{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .logo{
+      width:52px;height:52px;border-radius:12px;
+      background:linear-gradient(135deg,var(--accent), #4cc1ff);
+      display:flex;align-items:center;justify-content:center;color:white;font-weight:700;
+      box-shadow:var(--card-shadow);
+    }
+    .brand h1{font-size:1.05rem;margin:0}
+    nav{display:flex;gap:12px;align-items:center}
+    .btn{
+      padding:8px 12px;border-radius:10px;border:none;cursor:pointer;font-weight:600;
+      background:transparent;color:var(--text);transition:all .2s;
+    }
+    .btn:hover{transform:translateY(-3px)}
+    .theme-toggle{
+      padding:8px;border-radius:10px;background:var(--glass);backdrop-filter:blur(6px);
+      border:1px solid rgba(0,0,0,0.04);
+    }
+
+    /* Hero */
+    .hero{
+      display:grid;
+      grid-template-columns: 1fr 420px;
+      gap:28px;
+      align-items:center;
+      margin-bottom:36px;
+    }
+    .hero-left{
+      padding:20px;
+      border-radius:14px;
+      background:linear-gradient(180deg,var(--glass), var(--glass-2));
+      box-shadow:var(--card-shadow);
+      transition:transform .4s ease, box-shadow .4s;
+    }
+    .hero-left h2{margin:0 0 8px 0;font-size:1.6rem}
+    .typing{
+      color:var(--accent);
+      font-weight:700;
+      display:inline-block;
+      min-height:1.1em;
+    }
+    .hero-left p{margin-top:12px;color:var(--muted)}
+
+    .hero-right{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+    .hero-image{
+      width:100%;
+      max-width:420px;
+      border-radius:18px;
+      overflow:hidden;
+      box-shadow:var(--card-shadow);
+      transform:translateY(0);
+      transition:transform .6s cubic-bezier(.2,.9,.3,1);
+    }
+    .hero-image img{display:block;width:100%;height:auto}
+
+    /* Sections */
+    section{margin-bottom:32px}
+    h3{margin:0 0 12px 0}
+
+    /* Projects grid */
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:16px;
+    }
+    .card{
+      background:var(--surface);
+      border-radius:12px;
+      padding:14px;
+      box-shadow:var(--card-shadow);
+      transition:transform .25s ease, box-shadow .25s ease, opacity .45s ease;
+      opacity:0; transform: translateY(18px);
+    }
+    .card.visible{opacity:1; transform:none}
+    .card img{width:100%;border-radius:10px;display:block}
+    .card .meta{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
+    .project-open{cursor:pointer;padding:8px 10px;border-radius:8px;background:var(--accent);color:white;border:none}
+
+    /* Modal */
+    .modal-backdrop{
+      position:fixed;inset:0;background:rgba(2,6,23,0.6);display:none;align-items:center;justify-content:center;z-index:80;
+    }
+    .modal-backdrop.show{display:flex}
+    .modal{
+      width:min(900px,94%);
+      max-height:85vh;overflow:auto;border-radius:12px;padding:18px;background:linear-gradient(180deg,var(--surface),var(--glass));
+      box-shadow: 0 20px 40px rgba(0,0,0,0.45);
+    }
+    .modal .close{float:right;border:none;background:transparent;font-size:1rem;cursor:pointer;color:var(--muted)}
+    .modal img{max-width:100%;border-radius:8px;margin-top:10px}
+
+    /* Certificates flip cards */
+    .cert-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:16px;
+    }
+    .flip{
+      perspective:1200px;
+    }
+    .flip-inner{
+      position:relative;width:100%;height:280px;transform-style:preserve-3d;transition:transform .8s;
+      border-radius:12px;box-shadow:var(--card-shadow);cursor:pointer;
+      background:linear-gradient(180deg,var(--glass),var(--glass-2));
+    }
+    .flip-inner.flipped{transform:rotateY(180deg)}
+    .flip-face{
+      position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;padding:14px;display:flex;flex-direction:column;justify-content:center;align-items:center;
+    }
+    .front{font-weight:700}
+    .back{transform:rotateY(180deg);padding:18px;color:var(--muted);text-align:center}
+
+    /* Footer */
+    footer{color:var(--muted);font-size:.95rem;padding:18px 0;text-align:center;border-top:1px dashed rgba(0,0,0,0.04)}
+
+    /* small */
+    @media (max-width:880px){
+      .hero{grid-template-columns:1fr; padding:6px}
+      .hero-right{order:-1}
+      .hero-image{max-width:92%}
+    }
+
+    /* tiny helpers */
+    .muted{color:var(--muted)}
+    .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+    .chip{padding:6px 10px;border-radius:999px;border:1px solid rgba(0,0,0,0.05);font-weight:600;background:transparent}
+    /* Fade-in animation for when elements enter viewport */
+    .fade-up{opacity:0; transform:translateY(14px); transition:all .55s cubic-bezier(.15,.9,.25,1);}
+    .fade-up.visible{opacity:1; transform:none}
+  </style>
+</head>
+<body>
+  <div class="container" id="root">
+    <header>
+      <div class="brand">
+        <div class="logo">KG</div>
+        <div>
+          <h1>Krish Garg</h1>
+          <div class="muted" style="font-size:.85rem">Web Developer • Student • Creator</div>
+        </div>
+      </div>
+
+      <nav>
+        <button class="btn" id="projectsBtn">Projects</button>
+        <button class="btn" id="certsBtn">Certificates</button>
+        <button class="btn theme-toggle" id="themeToggle" title="Toggle dark / light">Toggle Theme</button>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-left fade-up">
+        <h2>Hello, I'm Krish — <span class="typing" id="typing"></span></h2>
+        <p>I build interactive web apps, experiments, and small tools. I focus on clean UI, performance, and delightful micro-interactions.</p>
+
+        <div style="margin-top:12px" class="row">
+          <div class="chip">HTML</div>
+          <div class="chip">CSS</div>
+          <div class="chip">JavaScript</div>
+          <div class="chip">React (practice)</div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="hero-image" aria-hidden="true">
+          <!-- Unsplash image as hero. Replace URL with your own image if desired. -->
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=0b0e2c1c9bfb0e73fef0c6d9409d6b0b" alt="Hero image: developer workspace">
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section>
+      <h3>Projects</h3>
+      <div class="grid" id="projectsGrid">
+        <!-- Project cards inserted by JS -->
+      </div>
+    </section>
+
+    <!-- Certificates -->
+    <section>
+      <h3>Certificates</h3>
+      <div class="cert-grid" id="certGrid">
+        <!-- Flip cards inserted by JS -->
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Krish Garg — Built with HTML, CSS & JavaScript
+    </footer>
+  </div>
+
+  <!-- Modal for project details -->
+  <div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal" role="document" id="modalContent">
+      <button class="close" id="modalClose">Close ✕</button>
+      <div id="modalBody">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ---------------------------
+    // Core data (replace with your own)
+    // ---------------------------
+    const DATA = {
+      projects: [
+        {
+          id: "p1",
+          title: "Energy Analyzer",
+          short: "Appliance-level energy analysis with visuals",
+          img: "https://images.unsplash.com/photo-1541534401786-2b7a4c4a5f95?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=3a9e3f9d1d3a2b0c5a7c2a9e8fd6a7d2",
+          description: "A Python + web dashboard that visualizes appliance-level energy consumption, highlights top appliances, and shows trends with regression.",
+          tags: ["Data", "Visualization", "Python"]
+        },
+        {
+          id: "p2",
+          title: "Tic Tac Toe (AI)",
+          short: "Browser playable tic-tac-toe with minimax AI",
+          img: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=7a9c34dff33bd1a3b3d354b7a6c8f3a7",
+          description: "Classic tic-tac-toe with a smart AI opponent and responsive design.",
+          tags: ["Game", "JavaScript"]
+        },
+        {
+          id: "p3",
+          title: "Portfolio Website",
+          short: "This website — modern single-file template",
+          img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=9c8e5f4e6a5c3b2d1f6a8c9b0e7d5a1b",
+          description: "A small portfolio with animation, theme switch, modals, and certificate flip cards — easy to customize.",
+          tags: ["Frontend", "HTML/CSS/JS"]
+        }
+      ],
+      certificates: [
+        {title:"Web Development Bootcamp", issuer:"ABC Academy", year:"2024"},
+        {title:"Data Visualization with Python", issuer:"DataLab", year:"2025"},
+        {title:"Problem Solving (HackerRank)", issuer:"HackerRank", year:"2025"}
+      ],
+      typingPhrases: ["Frontend Developer.", "Student.", "UI/UX Enthusiast.", "JS tinkerer."]
+    };
+
+    // ---------------------------
+    // Utility + DOM creation
+    // ---------------------------
+    const projectsGrid = document.getElementById('projectsGrid');
+    const certGrid = document.getElementById('certGrid');
+    const modalBackdrop = document.getElementById('modalBackdrop');
+    const modalBody = document.getElementById('modalBody');
+    const modalClose = document.getElementById('modalClose');
+
+    // Render project cards
+    function renderProjects(){
+      DATA.projects.forEach(p=>{
+        const card = document.createElement('article');
+        card.className = 'card fade-up';
+        card.innerHTML = `
+          <img src="${p.img}" alt="${p.title}">
+          <h4 style="margin:.6rem 0 0 0">${p.title}</h4>
+          <div class="muted" style="font-size:.95rem;margin-top:6px">${p.short}</div>
+          <div class="meta">
+            <div class="muted" style="font-size:.85rem">${p.tags.join(' • ')}</div>
+            <button class="project-open" data-id="${p.id}">Open</button>
+          </div>
+        `;
+        projectsGrid.appendChild(card);
+      });
+    }
+
+    // Render cert flip cards
+    function renderCerts(){
+      DATA.certificates.forEach((c, idx)=>{
+        const flip = document.createElement('div');
+        flip.className = 'flip';
+        flip.innerHTML = `
+          <div class="flip-inner" tabindex="0" data-idx="${idx}">
+            <div class="flip-face front">
+              <h4 style="margin:0">${c.title}</h4>
+              <div class="muted" style="margin-top:6px">${c.issuer}</div>
+              <div style="margin-top:10px;font-weight:700">${c.year}</div>
+            </div>
+            <div class="flip-face back">
+              <div style="font-weight:700;margin-bottom:8px">Certificate Details</div>
+              <div class="muted">Issued by ${c.issuer} in ${c.year}. Click to flip back.</div>
+            </div>
+          </div>
+        `;
+        certGrid.appendChild(flip);
+      });
+    }
+
+    // ---------------------------
+    // Modal logic
+    // ---------------------------
+    function openProject(id){
+      const p = DATA.projects.find(x=>x.id===id);
+      if(!p) return;
+      modalBody.innerHTML = `
+        <h2 style="margin:0">${p.title}</h2>
+        <p class="muted" style="margin:6px 0 0 0">${p.tags.join(' • ')}</p>
+        <p style="margin-top:12px">${p.description}</p>
+        <img src="${p.img}" alt="${p.title}">
+        <div style="margin-top:12px;">
+          <a href="#" class="btn" onclick="event.preventDefault(); alert('Demo clicked (replace with actual link)')">View Demo</a>
+          <a href="#" class="btn" style="margin-left:8px" onclick="event.preventDefault(); alert('Repo clicked (replace with actual link)')">View Repo</a>
+        </div>
+      `;
+      modalBackdrop.classList.add('show');
+      modalBackdrop.setAttribute('aria-hidden','false');
+    }
+
+    // event delegation for open buttons
+    document.addEventListener('click', e=>{
+      const openBtn = e.target.closest('.project-open');
+      if(openBtn){
+        const id = openBtn.dataset.id;
+        openProject(id);
+      }
+    });
+
+    modalClose.addEventListener('click', ()=>{
+      modalBackdrop.classList.remove('show');
+      modalBackdrop.setAttribute('aria-hidden','true');
+    });
+    modalBackdrop.addEventListener('click', (e)=>{
+      if(e.target === modalBackdrop){
+        modalBackdrop.classList.remove('show');
+        modalBackdrop.setAttribute('aria-hidden','true');
+      }
+    });
+
+    // keyboard escape to close modal
+    document.addEventListener('keydown', e=>{
+      if(e.key === 'Escape' && modalBackdrop.classList.contains('show')){
+        modalBackdrop.classList.remove('show');
+        modalBackdrop.setAttribute('aria-hidden','true');
+      }
+    });
+
+    // ---------------------------
+    // Flip card interaction (supports touch)
+    // ---------------------------
+    function enableFlipCards(){
+      document.querySelectorAll('.flip-inner').forEach(el=>{
+        el.addEventListener('click', ()=>{
+          el.classList.toggle('flipped');
+        });
+        // keyboard accessibility
+        el.addEventListener('keydown', (evt)=>{
+          if(evt.key === 'Enter' || evt.key === ' '){
+            evt.preventDefault();
+            el.classList.toggle('flipped');
+          }
+        });
+      });
+    }
+
+    // ---------------------------
+    // Typing effect (animated)
+    // ---------------------------
+    function typingEffect(el, phrases, opts = {typeSpeed:60, pause:1400}){
+      let phraseIndex = 0;
+      let charIndex = 0;
+      let deleting = false;
+      function tick(){
+        const current = phrases[phraseIndex];
+        if(!deleting){
+          charIndex++;
+          el.textContent = current.slice(0,charIndex);
+        } else {
+          charIndex--;
+          el.textContent = current.slice(0,charIndex);
+        }
+
+        let delay = opts.typeSpeed + Math.random()*40;
+        if(!deleting && charIndex === current.length){
+          delay = opts.pause;
+          deleting = true;
+        } else if(deleting && charIndex === 0){
+          deleting = false;
+          phraseIndex = (phraseIndex + 1) % phrases.length;
+          delay = 250;
+        }
+        setTimeout(tick, delay);
+      }
+      tick();
+    }
+
+    // ---------------------------
+    // Intersection Observer for fade-in animations
+    // ---------------------------
+    function setupObserver(){
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting){
+            entry.target.classList.add('visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, {threshold:0.15});
+      document.querySelectorAll('.fade-up, .card').forEach(el=>{
+        io.observe(el);
+      });
+    }
+
+    // ---------------------------
+    // Theme toggle (persist)
+    // ---------------------------
+    const themeToggle = document.getElementById('themeToggle');
+    const root = document.documentElement;
+
+    function applyTheme(theme){
+      if(theme === 'dark') root.setAttribute('data-theme','dark');
+      else root.removeAttribute('data-theme');
+      try{ localStorage.setItem('theme', theme);}catch(e){}
+    }
+    function loadTheme(){
+      let saved = null;
+      try{ saved = localStorage.getItem('theme'); }catch(e){}
+      if(saved) applyTheme(saved);
+      else {
+        // prefer dark if user prefers it (optional)
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        applyTheme(prefersDark ? 'dark' : 'light');
+      }
+    }
+    themeToggle.addEventListener('click', ()=>{
+      const isDark = root.getAttribute('data-theme') === 'dark';
+      applyTheme(isDark ? 'light' : 'dark');
+    });
+
+    // ---------------------------
+    // small UX: scroll to projects/certs
+    // ---------------------------
+    document.getElementById('projectsBtn').addEventListener('click', ()=>{
+      document.querySelector('section h3').scrollIntoView({behavior:'smooth', block:'start'});
+    });
+    document.getElementById('certsBtn').addEventListener('click', ()=>{
+      document.querySelectorAll('section')[1].scrollIntoView({behavior:'smooth', block:'start'});
+    });
+
+    // ---------------------------
+    // Init everything
+    // ---------------------------
+    (function init(){
+      renderProjects();
+      renderCerts();
+      enableFlipCards();
+      typingEffect(document.getElementById('typing'), DATA.typingPhrases);
+      setupObserver();
+      loadTheme();
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // small accessibility: focus management for modal
+      modalBackdrop.addEventListener('keydown', (e)=>{
+        if(e.key === 'Tab'){
+          // keep focus inside modal - simple trap
+          const focusables = modalBackdrop.querySelectorAll('a, button, [tabindex]:not([tabindex="-1"])');
+          if(focusables.length === 0) return;
+          const first = focusables[0], last = focusables[focusables.length -1];
+          if(e.shiftKey && document.activeElement === first){
+            e.preventDefault(); last.focus();
+          } else if(!e.shiftKey && document.activeElement === last){
+            e.preventDefault(); first.focus();
+          }
+        }
+      });
+
+      // After rendering, attach flip inner elements (it was created dynamically)
+      // Use a tiny timeout to ensure elements are in DOM
+      setTimeout(enableFlipCards, 50);
+    })();
+
+    // End of script
+  </script>
+</body>
+</html>
